@@ -1,4 +1,4 @@
-package com.example.demo.user;
+package com.example.demo.customer;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -22,31 +22,31 @@ import com.example.demo.insurance.Insurance;
  *
  */
 @Entity
-@Table(name = "users")
-public class User {
+@Table(name = "customers")
+public class Customer {
 
-	@Id @GeneratedValue @Column(name = "users_id")
+	@Id @GeneratedValue @Column(name = "customers_id")
 	private  Long id;
-	@Column(name = "users_firstName")
+	@Column(name = "customers_firstName")
 	private String firstName;
-	@Column(name = "users_lastName")
+	@Column(name = "customers_lastName")
 	private String lastName;
-	@Column(name = "users_age")
+	@Column(name = "customers_age")
 	private int age;
 	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "user_insurance_id", nullable = true)
+	@JoinColumn(name = "customer_insurance_id", nullable = true)
 	private Insurance insurance;
 
 	
 	
-	public User(String firstName, String lastName, int age, Insurance insurance) {
+	public Customer(String firstName, String lastName, int age, Insurance insurance) {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.age = age;
 		this.insurance = insurance;
 	}
 
-	public User() {
+	public Customer() {
 	}
 
 	
@@ -109,11 +109,11 @@ public class User {
 			return false;
 		}
 		
-		if (!(obj instanceof User)) {
+		if (!(obj instanceof Customer)) {
 			return false;
 		}
 		
-		User user = (User) obj;
+		Customer user = (Customer) obj;
 		
 		return new EqualsBuilder()
 				.append(this.getId(), user.getId())

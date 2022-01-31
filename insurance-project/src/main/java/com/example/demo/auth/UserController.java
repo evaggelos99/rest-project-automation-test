@@ -29,26 +29,25 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@RequestMapping(value = "/usersauth")
+@RequestMapping(value = "/users")
 @RestController
-public class UserAuthController {
+public class UserController {
 
-	private static final Logger log = LoggerFactory.getLogger(UserAuthController.class);
+	private static final Logger log = LoggerFactory.getLogger(UserController.class);
 
 	private final String authServerUrl = "http://localhost:8080/auth";
-	private final String realm = "tutorialsbuddy-example";
-	private final String clientId = "tutorialsbuddy-app";
-	private final String role = "student";
-	// Get client secret from the Keycloak admin console (in the credential tab)
-	private final String clientSecret = "7b768120-ef4e-4100-8c99-85bb9d4dc5c3";
+	private final String realm = "insurance-realm";
+	private final String clientId = "insurance-project";
+	private final String role = "user";
+
+	private final String clientSecret = "C5EN8sUXTKZrvDqfHz6XfT401cFFmsuy";
 
 	@PostMapping(path = "/create")
 	public ResponseEntity<?> createUser(@RequestBody final UserDTO userDTO) {
 
 		final Keycloak keycloak = KeycloakBuilder.builder().serverUrl(this.authServerUrl)
 				.grantType(OAuth2Constants.PASSWORD).realm("master").clientId("admin-cli").username("admin")
-				.password("Testing123").resteasyClient(new ResteasyClientBuilder().connectionPoolSize(10).build())
-				.build();
+				.password("admin").resteasyClient(new ResteasyClientBuilder().connectionPoolSize(10).build()).build();
 
 		keycloak.tokenManager().getAccessToken();
 

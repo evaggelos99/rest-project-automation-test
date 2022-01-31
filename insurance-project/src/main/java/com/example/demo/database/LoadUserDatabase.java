@@ -7,8 +7,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import com.example.demo.car.Car;
+import com.example.demo.customer.Customer;
 import com.example.demo.insurance.Insurance;
-import com.example.demo.user.User;
 
 @Configuration
 public class LoadUserDatabase {
@@ -18,8 +18,8 @@ public class LoadUserDatabase {
 	  @Bean
 	  CommandLineRunner initDatabase(IUserRepository repository) {
 	    return args -> {
-			LOGGER.info("Preloading " + repository.save(new User("Evangelos", "Georgiou", 22, new Insurance(new Car("honda", "civic")))));
-	    	LOGGER.info("Preloading " + repository.save(new User("Kyriakos", "Georgiou", 23, new Insurance(new Car("honda", "civic")))));
+			LOGGER.info("Preloading " + repository.save(new Customer("Evangelos", "Georgiou", 22, new Insurance(new Car("honda", "civic")))));
+	    	LOGGER.info("Preloading " + repository.save(new Customer("Kyriakos", "Georgiou", 23, new Insurance(new Car("honda", "civic")))));
 	    };
 	  }
 }

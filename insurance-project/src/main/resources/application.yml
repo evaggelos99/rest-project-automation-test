@@ -1,0 +1,9 @@
+keycloak:
+  auth-server-url: http://localhost:8080/auth
+  bearer-only: true
+  realm: insurance-realm
+  resource: insurance-project
+  ssl-required: none
+  use-resource-role-mappings: true
+server:
+  port: 8081

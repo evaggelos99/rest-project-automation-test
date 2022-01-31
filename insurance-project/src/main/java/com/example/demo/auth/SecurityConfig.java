@@ -52,7 +52,7 @@ public class SecurityConfig extends KeycloakWebSecurityConfigurerAdapter {
 	}
 
 	@Autowired
-	public void configureGlobal(final AuthenticationManagerBuilder auth) throws Exception {
+	public void configureGlobal(final AuthenticationManagerBuilder auth) {
 		final KeycloakAuthenticationProvider keycloakAuthenticationProvider = this.keycloakAuthenticationProvider();
 
 		keycloakAuthenticationProvider.setGrantedAuthoritiesMapper(new SimpleAuthorityMapper());
